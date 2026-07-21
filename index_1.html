@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Les Travaux de Chloé — Révisions 6ème</title>
+<meta name="description" content="Missions de révision pour la 6ème : conjugaison, homophones, grammaire, maths, sciences et histoire.">
+<style>
+  :root{
+    --ink:#1e3a5f;
+    --ink-dark:#0f2440;
+    --amber:#d97706;
+    --amber-light:#fef3c7;
+    --amber-border:#fcd34d;
+    --orange:#ea580c;
+    --green:#16a34a;
+    --green-bg:#dcfce7;
+    --green-border:#86efac;
+    --red:#c2410c;
+    --sky-bg:#e0f2fe;
+    --sky-border:#7dd3fc;
+    --paper:#fffdf7;
+    --shadow: 0 8px 24px rgba(30,58,95,0.12);
+    --radius:20px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+    background: linear-gradient(180deg,#dbeafe 0%, #fef3c7 55%, #ffedd5 100%);
+    background-attachment: fixed;
+    color:#1f2937;
+    min-height:100vh;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(14px, 4vw, 32px);
+  }
+  button{ font-family:inherit; cursor:pointer; -webkit-user-select:none; user-select:none; }
+  button:focus-visible, input:focus-visible{ outline: 3px solid var(--ink); outline-offset:2px; }
+
+  /* ---------- HOME ---------- */
+  .home-header{ text-align:center; margin-bottom: clamp(20px,5vw,32px); }
+  .home-emoji{ font-size: clamp(2.6rem,9vw,3.4rem); line-height:1; }
+  h1{ font-size: clamp(1.5rem, 5.4vw, 2.1rem); color: var(--ink-dark); margin: 6px 0 4px; letter-spacing:.3px; }
+  .subtitle{ color: var(--ink); font-size: clamp(0.95rem,3.4vw,1.1rem); margin:0; }
+  .laurels-badge{
+    display:inline-block; margin-top:12px; background: rgba(255,255,255,0.75);
+    border-radius:999px; padding:6px 16px; color:#92400e; font-weight:bold;
+    font-size: 0.92rem; box-shadow: var(--shadow);
+  }
+  .mission-grid{
+    display:grid; gap:12px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 600px){
+    .mission-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  .mission-card{
+    display:flex; align-items:flex-start; gap:12px; text-align:left;
+    background: var(--paper); border:2px solid var(--amber-border); border-radius:18px;
+    padding: 14px 16px; box-shadow: var(--shadow);
+    transition: transform .15s ease, border-color .15s ease;
+    width:100%;
+  }
+  .mission-card:hover{ border-color: var(--amber); transform: translateY(-2px); }
+  .mission-card:active{ transform: translateY(0); }
+  .mission-icon{ font-size: 1.9rem; flex-shrink:0; }
+  .mission-title{ font-weight:bold; color: var(--ink-dark); display:flex; align-items:center; gap:6px; font-size:1.02rem; }
+  .mission-sub{ color:#57606f; font-size:0.88rem; margin-top:3px; line-height:1.35; }
+  .footnote{ text-align:center; color:#78716c; font-size:0.85rem; margin-top: 28px; padding: 0 8px; }
+
+  /* ---------- QUIZ ---------- */
+  .topbar{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; gap:8px; flex-wrap:wrap; }
+  .back-btn{ background:none; border:none; color: var(--ink); font-weight:bold; font-size:0.95rem; padding:6px 0; }
+  .back-btn:hover{ text-decoration:underline; }
+  .progress-label{ font-size:0.85rem; color:#57606f; font-weight:600; }
+  .progress-track{
+    height:12px; background: var(--paper); border-radius:999px; overflow:hidden;
+    margin-bottom:18px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.08); border:1px solid var(--amber-border);
+  }
+  .progress-fill{ height:100%; background: linear-gradient(90deg,#fbbf24,#ea580c); transition: width .4s ease; }
+
+  .quiz-card{
+    background: var(--paper); border-radius: var(--radius); border:2px solid var(--amber-border);
+    box-shadow: var(--shadow); padding: clamp(16px,4.5vw,28px);
+  }
+  .quiz-mission-tag{ display:flex; align-items:center; gap:8px; margin-bottom:14px; font-weight:bold; color: var(--ink-dark); }
+  .quiz-mission-tag .icon{ font-size:1.5rem; }
+  .prompt{ font-size: clamp(1.02rem,4vw,1.2rem); color:#1f2937; line-height:1.5; margin: 0 0 6px; }
+
+  .options{ display:grid; gap:9px; margin-top:14px; }
+  .option-btn{
+    text-align:left; padding:13px 16px; border-radius:14px; border:2px solid var(--amber-border);
+    background: var(--amber-light); color:#1f2937; font-weight:500; font-size:1rem; line-height:1.4;
+    transition: background .12s, border-color .12s;
+  }
+  .option-btn:not(:disabled):hover{ border-color: var(--amber); background:#fde8b8; }
+  .option-btn:disabled{ opacity:0.7; cursor:default; }
+  .option-btn.correct{ background: var(--green-bg); border-color: var(--green); color:#14532d; }
+
+  .input-row{ display:flex; gap:8px; margin-top:14px; }
+  .text-input{
+    flex:1; min-width:0; padding:13px 14px; border-radius:14px; border:2px solid #fcd34d;
+    background: var(--amber-light); font-size:1.05rem; color:#1f2937; font-family:inherit;
+  }
+  .text-input:disabled{ opacity:0.75; }
+  .validate-btn{
+    background: var(--ink-dark); color:#fff; font-weight:bold; border:none; border-radius:14px;
+    padding: 0 20px; font-size:0.98rem; flex-shrink:0;
+  }
+  .validate-btn:hover{ background:#16324f; }
+  .validate-btn:disabled{ opacity:0.5; }
+
+  .feedback{ margin-top:16px; padding:14px 16px; border-radius:14px; font-weight:600; font-size:0.98rem; }
+  .feedback.ok{ background: var(--green-bg); color:#14532d; border:2px solid var(--green-border); }
+  .feedback.ko{ background:#ffedd5; color:#9a3412; border:2px solid #fdba74; }
+
+  .hint{ margin-top:10px; padding:14px 16px; border-radius:14px; background: var(--sky-bg); border:2px solid var(--sky-border); color:#0c4a6e; font-size:0.95rem; line-height:1.5; }
+  .hint b{ color:#075985; }
+
+  .next-btn{
+    margin-top:16px; width:100%; background: var(--amber); color:#fff; font-weight:bold;
+    border:none; border-radius:14px; padding:14px; font-size:1.02rem; box-shadow: 0 4px 12px rgba(217,119,6,0.35);
+  }
+  .next-btn:hover{ background:#c2650a; }
+
+  svg.number-line{ display:block; width:100%; max-width:520px; margin: 10px auto 4px; height:auto; }
+
+  /* ---------- END SCREEN ---------- */
+  .end-wrap{ display:flex; align-items:center; justify-content:center; min-height: 80vh; }
+  .end-card{
+    background: var(--paper); border-radius:24px; border:4px solid var(--amber-border);
+    box-shadow: var(--shadow); padding: clamp(24px,6vw,36px); max-width:420px; width:100%; text-align:center;
+  }
+  .end-emoji{ font-size: 3.6rem; margin-bottom:6px; }
+  .end-title{ font-size:1.5rem; color: var(--ink-dark); margin:0 0 8px; font-weight:bold; }
+  .end-score{ font-size:1.08rem; color:#374151; margin:0 0 4px; }
+  .end-score b{ color:#b45309; }
+  .end-msg{ color:#57606f; margin: 10px 0 22px; line-height:1.5; }
+  .end-actions{ display:flex; flex-direction:column; gap:10px; }
+  .btn-primary, .btn-secondary{ border:none; border-radius:14px; padding:14px; font-weight:bold; font-size:1rem; color:#fff; }
+  .btn-primary{ background: var(--amber); box-shadow:0 4px 12px rgba(217,119,6,0.35); }
+  .btn-primary:hover{ background:#c2650a; }
+  .btn-secondary{ background: var(--ink-dark); }
+  .btn-secondary:hover{ background:#16324f; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+<div id="app" class="wrap"></div>
+
+<script>
+(function(){
+"use strict";
+
+var QUESTIONS_PER_SESSION = 8;
+var LAUREL_KEY = "travauxChloeLaurels";
+
+/* ============ UTILITAIRES ============ */
+function rand(min, max){ return Math.floor(Math.random()*(max-min+1))+min; }
+function shuffle(arr){
+  var a = arr.slice();
+  for(var i=a.length-1;i>0;i--){
+    var j = Math.floor(Math.random()*(i+1));
+    var tmp=a[i]; a[i]=a[j]; a[j]=tmp;
+  }
+  return a;
+}
+function norm(s){
+  return String(s).trim().toLowerCase().replace(/\s+/g," ").replace(/’/g,"'");
+}
+function sameNumber(a,b){
+  var pa = parseFloat(String(a).replace(",", "."));
+  var pb = parseFloat(String(b).replace(",", "."));
+  return !isNaN(pa) && !isNaN(pb) && Math.abs(pa-pb) < 0.0001;
+}
+function esc(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function loadLaurels(){
+  try{ return JSON.parse(localStorage.getItem(LAUREL_KEY) || "{}"); }
+  catch(e){ return {}; }
+}
+function saveLaurels(l){
+  try{ localStorage.setItem(LAUREL_KEY, JSON.stringify(l)); }catch(e){}
+}
+
+/* ============ BANQUE : CONJUGAISON (générative + fixe) ============ */
+var VERBES_2G = [
+  {v:"finir", c:"nos devoirs"}, {v:"grandir", c:"très vite"}, {v:"choisir", c:"un livre à la bibliothèque"},
+  {v:"rougir", c:"de plaisir"}, {v:"réfléchir", c:"avant de répondre"}, {v:"obéir", c:"aux consignes"},
+  {v:"ralentir", c:"avant le virage"}, {v:"applaudir", c:"les acteurs du spectacle"}, {v:"nourrir", c:"les rapaces du parc"},
+  {v:"bâtir", c:"une cabane dans le jardin"}, {v:"remplir", c:"la gourde avant le départ"}, {v:"réussir", c:"tous les exercices"},
+  {v:"franchir", c:"la ligne d'arrivée"}, {v:"guérir", c:"rapidement"}, {v:"atterrir", c:"en douceur"},
+  {v:"bondir", c:"de joie"}, {v:"saisir", c:"la corde"}, {v:"avertir", c:"les voisins"},
+  {v:"gravir", c:"la montagne comme Hercule"}, {v:"vieillir", c:"sans changer"}
+];
+var PRONOMS_2G = [
+  {p:"je", t:"issais"}, {p:"tu", t:"issais"}, {p:"elle", t:"issait"}, {p:"il", t:"issait"},
+  {p:"nous", t:"issions"}, {p:"vous", t:"issiez"}, {p:"elles", t:"issaient"}, {p:"ils", t:"issaient"}
+];
+function genImparfait2G(count){
+  return shuffle(VERBES_2G).slice(0,count).map(function(item){
+    var v=item.v, c=item.c;
+    var pr = PRONOMS_2G[rand(0,PRONOMS_2G.length-1)];
+    var radical = v.slice(0,-2);
+    var vowel = /^[aeiouéèh]/.test(v);
+    var sujet = (pr.p==="je" && vowel) ? "j'" : (pr.p+" ");
+    return {
+      type:"input",
+      prompt:"Imparfait — ("+v+") : "+sujet+"______ "+c+".",
+      answer: radical+pr.t,
+      hint: "2ᵉ groupe : radical "+radical.toUpperCase()+" + ISS + terminaison de « "+pr.p+" ». Les DEUX S sont obligatoires : "+radical+"-iss-..."
+    };
+  });
+}
+
+var CONJUGAISON = [
+  {type:"input", prompt:"Imparfait — (chanter) : nous ______ en chœur.", answer:"chantions", hint:"1ᵉʳ groupe : radical CHANT + terminaison -ions pour « nous »."},
+  {type:"input", prompt:"Imparfait — (manger) : je ______ une pomme.", answer:"mangeais", hint:"Attention : on garde le E après le G pour faire le son « je » → mang-e-ais."},
+  {type:"input", prompt:"Imparfait — (lancer) : tu ______ le ballon.", answer:"lançais", hint:"Le C devient Ç devant le A pour garder le son « s » : lan-ç-ais."},
+  {type:"input", prompt:"Passé composé — (finir) : elle a ______ son travail.", answer:"fini", hint:"Avec l'auxiliaire AVOIR, le participe passé de « finir » se termine par -i, sans accord."},
+  {type:"input", prompt:"Passé composé — (prendre) : nous avons ______ le bus.", answer:"pris", hint:"« Prendre » a un participe passé irrégulier. Pense à : « le bus que j'ai pri... »"},
+  {type:"input", prompt:"Passé composé — (partir) : elles sont ______ tôt.", answer:"parties", hint:"Avec l'auxiliaire ÊTRE, le participe passé s'accorde avec le sujet. « Elles » = féminin pluriel → -ies."},
+  {type:"input", prompt:"Passé composé — (tomber) : elle est ______ dans la cour.", answer:"tombée", hint:"Auxiliaire ÊTRE → accord avec « elle » : féminin singulier, donc -ée."},
+  {type:"input", prompt:"Passé composé — (voir) : j'ai ______ un rapace.", answer:"vu", hint:"Participe passé irrégulier de « voir », très court : 2 lettres seulement."},
+  {type:"input", prompt:"Passé composé — (faire) : ils ont ______ du vélo.", answer:"fait", hint:"Participe passé irrégulier de « faire ». Avec AVOIR, pas d'accord avec le sujet."},
+  {type:"mcq", prompt:"Dans quelle phrase le verbe est-il au FUTUR ?", options:["Hercule combattait le lion.","Hercule combattra le lion.","Hercule a combattu le lion.","Hercule combat le lion."], answer:"Hercule combattra le lion.", hint:"Le futur se reconnaît au R avant la terminaison : -rai, -ras, -ra, -rons, -rez, -ront."},
+  {type:"mcq", prompt:"Dans quelle phrase le verbe est-il au FUTUR ?", options:["Nous irons au collège.","Nous allions au collège.","Nous sommes allés au collège.","Nous allons au collège."], answer:"Nous irons au collège.", hint:"Cherche la terminaison en -rons : c'est la marque du futur avec « nous »."}
+];
+
+/* ============ BANQUE : HOMOPHONES ============ */
+var HOMOPHONES = [
+  {type:"mcq", prompt:"Mon frère ___ parti à l'école.", options:["et","est"], answer:"est", hint:"Remplace par « était ». Si la phrase reste correcte, c'est le verbe être : EST."},
+  {type:"mcq", prompt:"Chloé aime les chats ___ les chiens.", options:["et","est"], answer:"et", hint:"Remplace par « et puis ». Si ça marche, c'est ET."},
+  {type:"mcq", prompt:"Elle ___ un vélo tout neuf.", options:["a","à"], answer:"a", hint:"Remplace par « avait ». Si la phrase reste correcte, c'est le verbe avoir : A sans accent."},
+  {type:"mcq", prompt:"Nous allons ___ la piscine.", options:["a","à"], answer:"à", hint:"Essaie de remplacer par « avait ». Impossible ? Alors c'est À avec accent."},
+  {type:"mcq", prompt:"Ils ___ gagné le match.", options:["on","ont"], answer:"ont", hint:"Remplace par « avaient ». Si ça marche, c'est ONT (verbe avoir)."},
+  {type:"mcq", prompt:"___ frappe à la porte.", options:["On","Ont"], answer:"On", hint:"Remplace par « il ». Si ça marche, c'est ON."},
+  {type:"mcq", prompt:"Mes cousines ___ arrivées hier.", options:["son","sont"], answer:"sont", hint:"Remplace par « étaient ». Si ça marche, c'est SONT (verbe être)."},
+  {type:"mcq", prompt:"Il range ___ cartable.", options:["son","sont"], answer:"son", hint:"SON = le sien. On peut dire « le cartable de lui »."},
+  {type:"mcq", prompt:"Les élèves rangent ___ affaires.", options:["leur","leurs"], answer:"leurs", hint:"« Affaires » est au pluriel → LEURS avec un S."},
+  {type:"mcq", prompt:"Je ne sais pas ___ tu habites.", options:["ou","où"], answer:"où", hint:"OÙ avec accent indique un lieu. OU sans accent = un choix (fromage ou dessert)."},
+  {type:"mcq", prompt:"Tu veux une pomme ___ une poire ?", options:["ou","où"], answer:"ou", hint:"Ici c'est un choix entre deux choses → OU sans accent (= ou bien)."},
+  {type:"mcq", prompt:"___ chaussures sont trop petites.", options:["Ces","Ses","C'est","S'est"], answer:"Ces", hint:"On montre des chaussures : « ces chaussures-là ». CES = démonstratif."},
+  {type:"mcq", prompt:"Il a perdu ___ clés.", options:["ces","ses","c'est","s'est"], answer:"ses", hint:"Les clés sont À LUI → SES (= les siennes)."},
+  {type:"mcq", prompt:"___ une très bonne idée !", options:["Ces","Ses","C'est","S'est"], answer:"C'est", hint:"Remplace par « cela est ». Si ça marche → C'EST."},
+  {type:"mcq", prompt:"Elle ___ blessée en tombant.", options:["ces","ses","c'est","s'est"], answer:"s'est", hint:"Suivi d'un participe passé (blessée) : elle S'EST blessée = verbe pronominal."},
+  {type:"mcq", prompt:"___ soir, nous mangeons des crêpes.", options:["Se","Ce"], answer:"Ce", hint:"CE soir = ce soir-là (démonstratif). SE s'utilise devant un verbe : il SE lave."},
+  {type:"mcq", prompt:"Le chat ___ cache sous le lit.", options:["se","ce"], answer:"se", hint:"SE + verbe (se cache, se lave, se promène) → SE."},
+  {type:"mcq", prompt:"___ voiture est garée ___-bas.", options:["La / là","Là / la","La / la","Là / là"], answer:"La / là", hint:"LA + nom (la voiture). LÀ avec accent = un lieu (là-bas)."},
+  {type:"mcq", prompt:"Elle a décidé de ______ son dessert.", options:["manger","mangé"], answer:"manger", hint:"Remplace par « prendre ». Si ça marche → infinitif en -ER."},
+  {type:"mcq", prompt:"Le gâteau a été ______ en entier.", options:["manger","mangé"], answer:"mangé", hint:"Remplace par « pris ». Si ça marche → participe passé en -É."},
+  {type:"mcq", prompt:"Il faut ______ avant de traverser.", options:["regarder","regardé"], answer:"regarder", hint:"Après « il faut », on met l'infinitif. Teste avec « prendre »."},
+  {type:"mcq", prompt:"Chloé a ______ un poème magnifique.", options:["réciter","récité"], answer:"récité", hint:"Après l'auxiliaire AVOIR → participe passé. Teste avec « pris » : elle a pris... ✔"},
+  {type:"mcq", prompt:"Le film ___ enfin terminé.", options:["et","est"], answer:"est", hint:"Remplace par « était ». Ça marche → verbe être : EST."},
+  {type:"mcq", prompt:"Prends un stylo ___ une gomme.", options:["et","est"], answer:"et", hint:"Remplace par « et puis » : un stylo et puis une gomme ✔ → ET."},
+  {type:"mcq", prompt:"Il pense ___ ses vacances en Grèce.", options:["a","à"], answer:"à", hint:"« Il pense avait ses vacances » ? Impossible → À avec accent."},
+  {type:"mcq", prompt:"Elle ___ très faim ce midi.", options:["a","à"], answer:"a", hint:"« Elle avait très faim » ✔ → verbe avoir : A sans accent."},
+  {type:"mcq", prompt:"Les Grecs ___ construit de magnifiques temples.", options:["on","ont"], answer:"ont", hint:"« Les Grecs avaient construit » ✔ → ONT."},
+  {type:"mcq", prompt:"En été, ___ va souvent à la piscine.", options:["on","ont"], answer:"on", hint:"« En été, IL va à la piscine » ✔ → ON."},
+  {type:"mcq", prompt:"Où ___ passées mes lunettes ?", options:["son","sont"], answer:"sont", hint:"« Où étaient passées mes lunettes » ✔ → SONT."},
+  {type:"mcq", prompt:"Il prête ___ compas à sa voisine.", options:["son","sont"], answer:"son", hint:"SON compas = le sien. On peut dire « le compas de lui »."},
+  {type:"mcq", prompt:"Je ___ raconte une histoire chaque soir.", options:["leur","leurs"], answer:"leur", hint:"Devant un VERBE, « leur » est un pronom : il ne prend JAMAIS de S (= à eux)."},
+  {type:"mcq", prompt:"Ils promènent ___ chien au parc.", options:["leur","leurs"], answer:"leur", hint:"Un seul chien → « leur » reste au singulier, sans S."},
+  {type:"mcq", prompt:"Elles ont oublié ___ manteaux au vestiaire.", options:["leur","leurs"], answer:"leurs", hint:"« Manteaux » est au pluriel → LEURS avec un S."},
+  {type:"mcq", prompt:"Ce livre, elle ___ lu deux fois.", options:["la","là","l'a","l'as"], answer:"l'a", hint:"Remplace par « l'avait » : elle l'avait lu ✔ → L'A (le + verbe avoir)."},
+  {type:"mcq", prompt:"Ce film, tu ___ déjà vu ?", options:["la","là","l'a","l'as"], answer:"l'as", hint:"Avec TU, le verbe avoir prend un S : tu l'AS vu (= tu l'avais vu)."},
+  {type:"mcq", prompt:"Pose ton sac juste ___.", options:["la","là","l'a","l'as"], answer:"là", hint:"LÀ avec accent indique un LIEU : ici, là, là-bas."},
+  {type:"mcq", prompt:"___ maîtresse explique la leçon.", options:["La","Là","L'a","L'as"], answer:"La", hint:"LA + nom (la maîtresse, la table) : c'est un article, sans accent."},
+  {type:"mcq", prompt:"___ as-tu rangé ton cahier de maths ?", options:["Ou","Où"], answer:"Où", hint:"On demande un LIEU → OÙ avec accent."},
+  {type:"mcq", prompt:"Tu préfères venir en bus ___ à vélo ?", options:["ou","où"], answer:"ou", hint:"C'est un choix (= ou bien) → OU sans accent."},
+  {type:"mcq", prompt:"___ hier que nous sommes rentrés de vacances.", options:["Ces","Ses","C'est","S'est"], answer:"C'est", hint:"Remplace par « cela est » : cela est hier... ✔ → C'EST."},
+  {type:"mcq", prompt:"Il ___ trompé de chemin dans le labyrinthe.", options:["ces","ses","c'est","s'est"], answer:"s'est", hint:"Suivi d'un participe passé (trompé) : il S'EST trompé."},
+  {type:"mcq", prompt:"Regarde ___ nuages, il va pleuvoir !", options:["ces","ses","c'est","s'est"], answer:"ces", hint:"On MONTRE les nuages : ces nuages-là → démonstratif CES."},
+  {type:"mcq", prompt:"Chloé range ___ crayons dans sa trousse.", options:["ces","ses","c'est","s'est"], answer:"ses", hint:"Les crayons sont À ELLE → SES (= les siens)."},
+  {type:"mcq", prompt:"___ que je préfère, c'est la mythologie grecque.", options:["Se","Ce"], answer:"Ce", hint:"« Ce que », « ce qui » : toujours CE. SE ne s'utilise que devant un verbe."},
+  {type:"mcq", prompt:"Ils ___ retrouvent au parc après l'école.", options:["se","ce"], answer:"se", hint:"SE + verbe (se retrouvent) → verbe pronominal → SE."},
+  {type:"mcq", prompt:"Nous allons ______ le musée des Beaux-Arts.", options:["visiter","visité"], answer:"visiter", hint:"Après « aller », on met l'infinitif. Teste : nous allons PRENDRE ✔."},
+  {type:"mcq", prompt:"Pour ______, il faut s'entraîner tous les jours.", options:["gagner","gagné"], answer:"gagner", hint:"Après « pour », toujours l'infinitif. Teste : pour PRENDRE ✔."},
+  {type:"mcq", prompt:"Il a enfin ______ son exercice de fractions.", options:["terminer","terminé"], answer:"terminé", hint:"Après AVOIR → participe passé. Teste : il a PRIS ✔ → -É."},
+  {type:"mcq", prompt:"Le poème doit être ______ devant toute la classe.", options:["réciter","récité"], answer:"récité", hint:"Après ÊTRE → participe passé. Teste : doit être PRIS ✔ → -É."}
+];
+
+/* ============ BANQUE : GRAMMAIRE ============ */
+var GRAMMAIRE = [
+  {type:"mcq", prompt:"« Chloé écrit une lettre. » — Que représente « une lettre » ?", options:["COD","COI","COS","Sujet"], answer:"COD", hint:"Pose la question : Chloé écrit QUOI ? La réponse directe (sans petit mot) = COD."},
+  {type:"mcq", prompt:"« Elle parle à sa sœur. » — Que représente « à sa sœur » ?", options:["COD","COI","COS","Sujet"], answer:"COI", hint:"Elle parle À QUI ? Il y a le petit mot « à » → complément d'objet INDIRECT."},
+  {type:"mcq", prompt:"« Il offre un cadeau à son ami. » — Que représente « à son ami » ?", options:["COD","COI","COS","Sujet"], answer:"COS", hint:"Il y a déjà un COD (un cadeau). Le 2ᵉ complément avec « à » est le complément d'objet SECOND."},
+  {type:"mcq", prompt:"« Hermès porte des sandales ailées. » — Que représente « des sandales ailées » ?", options:["COD","COI","COS","Sujet"], answer:"COD", hint:"Hermès porte QUOI ? Réponse directe, sans « à » ni « de » → COD."},
+  {type:"mcq", prompt:"« Pense à ton exposé ! » — Que représente « à ton exposé » ?", options:["COD","COI","COS","Sujet"], answer:"COI", hint:"Pense À QUOI ? Le complément est relié par « à » → COI."},
+  {type:"mcq", prompt:"Quel est le type de la phrase : « Range ta chambre immédiatement. »", options:["Déclarative","Impérative","Interrogative"], answer:"Impérative", hint:"C'est un ordre, et le sujet n'est pas exprimé → phrase impérative."},
+  {type:"mcq", prompt:"Quel est le type de la phrase : « Aimes-tu la mythologie ? »", options:["Déclarative","Impérative","Interrogative"], answer:"Interrogative", hint:"Elle pose une question et se termine par un point d'interrogation."},
+  {type:"mcq", prompt:"Quel est le type de la phrase : « Le Feuilleton d'Hermès raconte la mythologie. »", options:["Déclarative","Impérative","Interrogative"], answer:"Déclarative", hint:"Elle donne simplement une information et se termine par un point."},
+  {type:"mcq", prompt:"Quelle phrase négative est correctement écrite ?", options:["Je n'ai pas fini.","J'ai pas fini.","Je nai pas fini.","Je n'ai fini."], answer:"Je n'ai pas fini.", hint:"La négation a DEUX parties : NE (ou N') ... PAS, qui encadrent le verbe conjugué."},
+  {type:"mcq", prompt:"Quelle est la forme négative de : « Il mange toujours des légumes. »", options:["Il ne mange jamais de légumes.","Il mange pas toujours des légumes.","Il ne mange pas toujours légumes."], answer:"Il ne mange jamais de légumes.", hint:"Le contraire de « toujours » est « jamais » : ne ... jamais."},
+  {type:"mcq", prompt:"À quoi sert le point d'interrogation ?", options:["À poser une question","À montrer la surprise","À terminer un ordre","À faire une pause"], answer:"À poser une question", hint:"On le trouve à la fin des phrases interrogatives."},
+  {type:"mcq", prompt:"À quoi servent les deux-points ( : ) ?", options:["À annoncer une explication ou une liste","À terminer la phrase","À poser une question","À séparer deux paragraphes"], answer:"À annoncer une explication ou une liste", hint:"Ils annoncent ce qui suit : une liste, une explication ou des paroles."},
+  {type:"mcq", prompt:"Quel signe encadre les paroles d'un personnage ?", options:["Les guillemets « »","Les parenthèses ( )","Le point-virgule ;","Les tirets seuls"], answer:"Les guillemets « »", hint:"Quand un personnage parle dans un récit, on ouvre et on ferme des guillemets."},
+  {type:"mcq", prompt:"Accorde correctement : « Les héroïnes grecques sont très ______. »", options:["courageuses","courageuse","courageux"], answer:"courageuses", hint:"« Héroïnes » = féminin pluriel → l'adjectif prend -es."},
+  {type:"mcq", prompt:"Accorde correctement : « Mes petits frères ______ dans le jardin. »", options:["jouent","joue","joues"], answer:"jouent", hint:"Le sujet « mes petits frères » = ils → terminaison -ent."},
+  {type:"mcq", prompt:"« Persée coupe la tête de Méduse. » — Que représente « la tête de Méduse » ?", options:["COD","COI","COS","Sujet"], answer:"COD", hint:"Persée coupe QUOI ? Réponse directe, sans petit mot → COD."},
+  {type:"mcq", prompt:"« Elle téléphone à sa grand-mère. » — Que représente « à sa grand-mère » ?", options:["COI","COD","COS","Sujet"], answer:"COI", hint:"Elle téléphone À QUI ? Un seul complément, relié par « à » → COI."},
+  {type:"mcq", prompt:"« Le professeur explique la leçon aux élèves. » — Que représente « aux élèves » ?", options:["COS","COD","COI","Sujet"], answer:"COS", hint:"Il y a déjà un COD (la leçon). Le 2ᵉ complément avec « aux » = COS."},
+  {type:"mcq", prompt:"« Nous regardons un documentaire sur les rapaces. » — Que représente « un documentaire sur les rapaces » ?", options:["COD","COI","COS","Sujet"], answer:"COD", hint:"Nous regardons QUOI ? Réponse directe → COD."},
+  {type:"mcq", prompt:"Quel est le type de la phrase : « Prends ton goûter avant de partir. »", options:["Impérative","Déclarative","Interrogative"], answer:"Impérative", hint:"C'est un ordre ou un conseil, sans sujet exprimé → impérative."},
+  {type:"mcq", prompt:"Quel est le type de la phrase : « Quand partons-nous en vacances ? »", options:["Interrogative","Déclarative","Impérative"], answer:"Interrogative", hint:"Le sujet est inversé (partons-NOUS) et il y a un « ? » → interrogative."},
+  {type:"mcq", prompt:"Quelle est la forme négative de : « Elle voit quelqu'un dans la cour. »", options:["Elle ne voit personne dans la cour.","Elle voit pas quelqu'un dans la cour.","Elle ne voit quelqu'un pas."], answer:"Elle ne voit personne dans la cour.", hint:"Le contraire de « quelqu'un » est « personne » : ne ... personne."},
+  {type:"mcq", prompt:"Quelle phrase négative est correctement écrite ?", options:["Nous n'avons rien compris.","Nous avons rien compris.","Nous n'avons rien pas compris."], answer:"Nous n'avons rien compris.", hint:"Deux mots pour la négation : N' ... RIEN. Jamais « rien » tout seul, jamais « rien pas »."},
+  {type:"mcq", prompt:"À quoi sert la virgule ?", options:["À faire une courte pause ou séparer les éléments d'une liste","À terminer une phrase","À poser une question","À encadrer un dialogue"], answer:"À faire une courte pause ou séparer les éléments d'une liste", hint:"Exemple : « J'achète des pommes, des poires et des fraises. »"},
+  {type:"mcq", prompt:"À quoi sert le point d'exclamation ?", options:["À exprimer une émotion forte (surprise, joie, colère)","À poser une question","À annoncer une liste","À séparer deux mots"], answer:"À exprimer une émotion forte (surprise, joie, colère)", hint:"« Quel spectacle magnifique ! » — on entend l'émotion dans la phrase."}
+];
+
+/* ============ BANQUE : POINT DE VUE ============ */
+var POINT_DE_VUE = [
+  {type:"mcq", prompt:"« Je m'appelle Hercule et je dois accomplir douze travaux. » — Qui raconte ?", options:["Hercule lui-même (1ʳᵉ personne)","Un narrateur extérieur","Zeus","Le lecteur"], answer:"Hercule lui-même (1ʳᵉ personne)", hint:"Le mot « JE » indique que le personnage raconte sa propre histoire."},
+  {type:"mcq", prompt:"Réécris à la 3ᵉ personne : « Je pars combattre le lion. » →", options:["Il part combattre le lion.","Je partais combattre le lion.","Tu pars combattre le lion.","Nous partons combattre le lion."], answer:"Il part combattre le lion.", hint:"Changer de point de vue : JE devient IL, et le verbe s'accorde avec « il »."},
+  {type:"mcq", prompt:"« Le loup vit une fillette au chaperon rouge. Elle avait l'air délicieuse... » — Quel est ce point de vue ?", options:["Celui du loup","Celui du chaperon rouge","Celui de la grand-mère","Celui du chasseur"], answer:"Celui du loup", hint:"Qui trouve la fillette « délicieuse » ? Ce sont les pensées du loup qu'on lit !"},
+  {type:"mcq", prompt:"Pour raconter la même scène du point de vue du chaperon rouge, on écrirait :", options:["« J'aperçus un loup énorme et j'eus très peur. »","« Le loup avait très faim. »","« Miam, un bon repas ! pensa le loup. »","« Le chasseur dormait. »"], answer:"« J'aperçus un loup énorme et j'eus très peur. »", hint:"Du point de vue du chaperon rouge : c'est ELLE qui parle (je) et ce sont SES émotions (la peur)."},
+  {type:"mcq", prompt:"Changer de point de vue dans un récit, c'est...", options:["Raconter la même histoire à travers les yeux d'un autre personnage","Changer la fin de l'histoire","Écrire plus vite","Ajouter des personnages"], answer:"Raconter la même histoire à travers les yeux d'un autre personnage", hint:"Même histoire, mais on change de « paire de lunettes » : un autre personnage raconte ce qu'il voit et ressent."},
+  {type:"mcq", prompt:"Réécris du point de vue de Chloé : « Chloé récita son poème devant la classe. » →", options:["« Je récitai mon poème devant la classe. »","« Elle récita son poème. »","« Tu récitas ton poème. »","« Chloé récite un poème. »"], answer:"« Je récitai mon poème devant la classe. »", hint:"Point de vue de Chloé = elle raconte : « Chloé » devient « je » et « son » devient « mon »."},
+  {type:"mcq", prompt:"Réécris à la 3ᵉ personne du pluriel : « Nous partons en voyage. » →", options:["« Ils partent en voyage. »","« Il part en voyage. »","« Vous partez en voyage. »","« Je pars en voyage. »"], answer:"« Ils partent en voyage. »", hint:"NOUS (plusieurs personnes) devient ILS ou ELLES, et le verbe prend -ent."},
+  {type:"mcq", prompt:"Quand le narrateur dit « je », c'est que...", options:["Un personnage de l'histoire raconte lui-même","L'auteur a oublié un mot","L'histoire est forcément vraie","Le lecteur est le héros"], answer:"Un personnage de l'histoire raconte lui-même", hint:"Le récit à la 1ʳᵉ personne : on voit l'histoire à travers les yeux de celui qui dit « je »."},
+  {type:"mcq", prompt:"Cendrillon racontée par la belle-mère commencerait par...", options:["« Cette petite ne m'a jamais obéi, quelle ingrate ! »","« J'étais une pauvre orpheline maltraitée. »","« Il était une fois un prince. »","« Ma marraine la fée m'aida. »"], answer:"« Cette petite ne m'a jamais obéi, quelle ingrate ! »", hint:"Du point de vue de la belle-mère : c'est ELLE qui parle, avec SON opinion (même injuste !) sur Cendrillon."},
+  {type:"mcq", prompt:"Le Minotaure raconte : « On m'a enfermé dans ce labyrinthe, je suis si seul... » — Qu'apporte ce changement de point de vue ?", options:["On découvre les émotions du monstre, il devient touchant","L'histoire change complètement de fin","Thésée devient le narrateur","Rien ne change"], answer:"On découvre les émotions du monstre, il devient touchant", hint:"Changer de point de vue fait découvrir ce que ressent un personnage... même le « méchant » de l'histoire !"}
+];
+
+/* ============ BANQUE : GÉOMÉTRIE ============ */
+var GEOMETRIE = [
+  {type:"mcq", prompt:"Quel quadrilatère a 4 côtés égaux ET 4 angles droits ?", options:["Le carré","Le rectangle","Le losange","Le parallélogramme"], answer:"Le carré", hint:"C'est le seul qui cumule les deux propriétés : côtés égaux + angles droits."},
+  {type:"mcq", prompt:"Quelle est la propriété du LOSANGE ?", options:["4 côtés de même longueur","4 angles droits","Un seul angle droit","3 côtés égaux"], answer:"4 côtés de même longueur", hint:"Le losange a ses 4 côtés égaux, mais pas forcément d'angles droits (sinon c'est un carré !)."},
+  {type:"mcq", prompt:"Quelle est la propriété du RECTANGLE ?", options:["4 angles droits et côtés opposés égaux","4 côtés égaux","Aucun angle droit","5 côtés"], answer:"4 angles droits et côtés opposés égaux", hint:"Pense à une porte : angles droits partout, et les côtés qui se font face sont de même longueur."},
+  {type:"mcq", prompt:"Quelle est la propriété du PARALLÉLOGRAMME ?", options:["Ses côtés opposés sont parallèles deux à deux","Il a 4 angles droits","Il a 4 côtés égaux","Il a 3 sommets"], answer:"Ses côtés opposés sont parallèles deux à deux", hint:"Son nom l'indique : parallélo... = côtés PARALLÈLES deux à deux."},
+  {type:"mcq", prompt:"Un triangle ISOCÈLE a...", options:["2 côtés de même longueur","3 côtés de même longueur","Aucun côté égal","Un angle droit obligatoire"], answer:"2 côtés de même longueur", hint:"ISO = égal. Deux de ses côtés sont égaux (et donc deux angles égaux aussi)."},
+  {type:"mcq", prompt:"Un triangle ÉQUILATÉRAL a...", options:["3 côtés de même longueur","2 côtés de même longueur","Un angle droit","4 côtés"], answer:"3 côtés de même longueur", hint:"ÉQUI-LATÉRAL = côtés égaux... tous les trois !"},
+  {type:"mcq", prompt:"Un triangle SCALÈNE a...", options:["Trois côtés de longueurs différentes","Deux côtés égaux","Trois côtés égaux","Toujours un angle droit"], answer:"Trois côtés de longueurs différentes", hint:"Le scalène est le triangle « quelconque » : aucun côté n'est égal à un autre."},
+  {type:"mcq", prompt:"Un triangle RECTANGLE a...", options:["Un angle droit","Trois angles droits","Trois côtés égaux","Quatre sommets"], answer:"Un angle droit", hint:"Rectangle = angle droit. Un triangle rectangle possède UN angle de 90°."},
+  {type:"mcq", prompt:"Comment s'appelle le segment qui relie deux sommets NON voisins d'un polygone ?", options:["Une diagonale","Un côté","Un rayon","Une médiane"], answer:"Une diagonale", hint:"Elle « traverse » la figure en diagonale, d'un sommet à un sommet opposé."},
+  {type:"mcq", prompt:"Comment s'appelle le point où deux côtés d'un polygone se rejoignent ?", options:["Un sommet","Une diagonale","Un angle plat","Un centre"], answer:"Un sommet", hint:"C'est le « coin » de la figure, comme le sommet d'une montagne."},
+  {type:"mcq", prompt:"Un polygone à 5 côtés s'appelle...", options:["Un pentagone","Un hexagone","Un quadrilatère","Un décagone"], answer:"Un pentagone", hint:"PENTA = 5 en grec. Hexa = 6."},
+  {type:"mcq", prompt:"Un polygone à 6 côtés s'appelle...", options:["Un hexagone","Un pentagone","Un octogone","Un triangle"], answer:"Un hexagone", hint:"HEXA = 6 en grec. La France est surnommée l'Hexagone à cause de sa forme !"},
+  {type:"mcq", prompt:"« Triangle ABC rectangle en B » : où se trouve l'angle droit ?", options:["Au sommet B","Au sommet A","Au sommet C","Au milieu du triangle"], answer:"Au sommet B", hint:"« Rectangle en B » veut dire que l'angle droit est AU SOMMET B. C'est pour ça qu'il faut bien nommer les sommets !"},
+  {type:"mcq", prompt:"« Triangle EFG isocèle en E » : quels côtés sont égaux ?", options:["EF et EG","FG et EF","FG et EG","Aucun"], answer:"EF et EG", hint:"« Isocèle en E » : les deux côtés égaux partent du sommet E."},
+  {type:"mcq", prompt:"Un quadrilatère est un polygone qui a...", options:["4 côtés","3 côtés","5 côtés","6 côtés"], answer:"4 côtés", hint:"QUADRI = 4 en latin. Carré, rectangle, losange... sont des quadrilatères."},
+  {type:"mcq", prompt:"Un polygone à 8 côtés s'appelle...", options:["Un octogone","Un hexagone","Un pentagone","Un quadrilatère"], answer:"Un octogone", hint:"OCTO = 8. Les panneaux STOP sont des octogones."},
+  {type:"mcq", prompt:"Quel outil utilise-t-on pour vérifier un angle droit ?", options:["L'équerre","Le compas","La règle seule","Le rapporteur uniquement"], answer:"L'équerre", hint:"L'équerre a un coin à 90° exactement : on le pose dans l'angle pour vérifier."},
+  {type:"mcq", prompt:"Quel outil permet de tracer un cercle ou de reporter une longueur ?", options:["Le compas","L'équerre","La gomme","Le rapporteur"], answer:"Le compas", hint:"On pique sa pointe et on fait tourner... ou on garde son écartement pour reporter une longueur."},
+  {type:"mcq", prompt:"Le carré est un rectangle particulier. Pourquoi ?", options:["Il a 4 angles droits, comme le rectangle","Il a 3 côtés","Il n'a pas d'angle droit","C'est faux, ce n'est pas un rectangle"], answer:"Il a 4 angles droits, comme le rectangle", hint:"Un rectangle = 4 angles droits. Le carré aussi ! Il a EN PLUS 4 côtés égaux."},
+  {type:"mcq", prompt:"Pour tracer un triangle précis avec les bonnes mesures, on utilise...", options:["La règle et le compas","Seulement la gomme","Seulement les doigts","Le rapporteur seul"], answer:"La règle et le compas", hint:"La règle pour le premier côté, le compas pour reporter les longueurs des deux autres côtés."}
+];
+
+/* ============ BANQUE : SCIENCES ============ */
+var SCIENCES = [
+  {type:"mcq", prompt:"Quelle planète est la plus proche du Soleil ?", options:["Mercure","Vénus","La Terre","Mars"], answer:"Mercure", hint:"L'ordre : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune."},
+  {type:"mcq", prompt:"Combien y a-t-il de planètes dans le système solaire ?", options:["8","9","7","12"], answer:"8", hint:"Depuis 2006, Pluton n'est plus une planète."},
+  {type:"mcq", prompt:"Le Soleil est...", options:["Une étoile","Une planète","Un satellite","Une comète"], answer:"Une étoile", hint:"Il produit sa propre lumière et sa propre chaleur : c'est la définition d'une étoile."},
+  {type:"mcq", prompt:"La Lune est...", options:["Un satellite naturel","Une planète","Une étoile","Un astéroïde"], answer:"Un satellite naturel", hint:"Elle tourne autour d'une planète (la Terre) : c'est la définition d'un satellite."},
+  {type:"mcq", prompt:"Quel astre laisse une traînée lumineuse quand il s'approche du Soleil ?", options:["Une comète","Un astéroïde","Une planète","Un satellite"], answer:"Une comète", hint:"C'est une boule de glace et de poussière : en s'approchant du Soleil, sa glace s'évapore et forme une « queue »."},
+  {type:"mcq", prompt:"Un astéroïde est...", options:["Un gros rocher qui tourne autour du Soleil","Une étoile filante","Un satellite de la Terre","Une petite étoile"], answer:"Un gros rocher qui tourne autour du Soleil", hint:"C'est un corps rocheux, bien plus petit qu'une planète."},
+  {type:"mcq", prompt:"Quel savant a affirmé que la Terre tourne autour du Soleil ?", options:["Copernic","Ptolémée","Hercule","Napoléon"], answer:"Copernic", hint:"Dans l'Antiquité, Ptolémée pensait que tout tournait autour de la Terre."},
+  {type:"mcq", prompt:"Quel savant a défendu les idées de Copernic grâce à sa lunette astronomique ?", options:["Galilée","Ptolémée","Aristote","Pasteur"], answer:"Galilée", hint:"Il est italien, il a observé le ciel avec une lunette et a été jugé pour ses idées."},
+  {type:"mcq", prompt:"Le passage de l'état SOLIDE à l'état LIQUIDE s'appelle...", options:["La fusion","La solidification","L'évaporation","La condensation"], answer:"La fusion", hint:"C'est ce qui arrive au glaçon qui fond dans ton verre."},
+  {type:"mcq", prompt:"Le passage de l'état LIQUIDE à l'état SOLIDE s'appelle...", options:["La solidification","La fusion","La vaporisation","La liquéfaction"], answer:"La solidification", hint:"C'est ce qui arrive à l'eau dans le congélateur : elle devient SOLIDE."},
+  {type:"mcq", prompt:"Le passage de l'état LIQUIDE à l'état GAZEUX s'appelle...", options:["La vaporisation (évaporation)","La fusion","La solidification","La condensation"], answer:"La vaporisation (évaporation)", hint:"C'est ce qui arrive à la flaque d'eau qui « disparaît » au soleil."},
+  {type:"mcq", prompt:"La buée sur une vitre froide, c'est de la vapeur d'eau qui...", options:["Se condense (redevient liquide)","Fond","Se solidifie","Disparaît"], answer:"Se condense (redevient liquide)", hint:"La vapeur (gaz) touche la vitre froide et redevient de petites gouttes : gaz → liquide."},
+  {type:"mcq", prompt:"Quelle planète est surnommée « la planète rouge » ?", options:["Mars","Vénus","Jupiter","Mercure"], answer:"Mars", hint:"C'est la 4ᵉ planète en partant du Soleil. Sa couleur vient de la rouille de son sol !"},
+  {type:"mcq", prompt:"Quelle est la plus GRANDE planète du système solaire ?", options:["Jupiter","La Terre","Saturne","Neptune"], answer:"Jupiter", hint:"C'est une géante gazeuse : on pourrait y ranger plus de 1 300 Terres !"},
+  {type:"mcq", prompt:"Quelle planète est célèbre pour ses grands anneaux ?", options:["Saturne","Mars","Mercure","La Terre"], answer:"Saturne", hint:"Ses anneaux sont faits de milliards de morceaux de glace et de roche."},
+  {type:"mcq", prompt:"Une « étoile filante », c'est en réalité...", options:["Un petit caillou qui brûle en entrant dans l'atmosphère","Une vraie étoile qui tombe","Une planète très rapide","Un satellite artificiel"], answer:"Un petit caillou qui brûle en entrant dans l'atmosphère", hint:"Ce n'est pas une étoile du tout ! C'est une poussière de l'espace qui s'enflamme."},
+  {type:"mcq", prompt:"Dans l'Antiquité, Ptolémée pensait que...", options:["La Terre était au centre et tout tournait autour d'elle","Le Soleil était au centre","La Terre était plate comme une crêpe","La Lune était une étoile"], answer:"La Terre était au centre et tout tournait autour d'elle", hint:"C'est le modèle « géocentrique » (géo = Terre)."},
+  {type:"mcq", prompt:"Un glaçon oublié sur la table : quel changement d'état se produit ?", options:["Solide → liquide (fusion)","Liquide → solide","Liquide → gaz","Gaz → liquide"], answer:"Solide → liquide (fusion)", hint:"Le glaçon (solide) devient de l'eau (liquide) : il FOND, c'est la fusion."},
+  {type:"mcq", prompt:"L'eau qui bout dans la casserole se transforme en...", options:["Vapeur d'eau (gaz)","Glace","Neige","Rien, elle disparaît"], answer:"Vapeur d'eau (gaz)", hint:"À 100 °C, l'eau liquide se vaporise : elle devient un gaz invisible, la vapeur d'eau."}
+];
+
+/* ============ BANQUE : HISTOIRE ============ */
+var HISTOIRE = [
+  {type:"mcq", prompt:"Que s'est-il passé le 14 juillet 1789 ?", options:["La prise de la Bastille","Le sacre de Napoléon","La bataille de Waterloo","L'exécution du roi"], answer:"La prise de la Bastille", hint:"Les Parisiens attaquent une prison-forteresse, symbole du pouvoir du roi. C'est devenu notre fête nationale !"},
+  {type:"mcq", prompt:"En quelle année commence la Révolution française ?", options:["1789","1804","1715","1815"], answer:"1789", hint:"La même année que la prise de la Bastille."},
+  {type:"mcq", prompt:"Quel texte célèbre est adopté le 26 août 1789 ?", options:["La Déclaration des droits de l'homme et du citoyen","Le Code civil","La Constitution de la Vᵉ République","Le traité de Versailles"], answer:"La Déclaration des droits de l'homme et du citoyen", hint:"« Les hommes naissent et demeurent libres et égaux en droits » : c'est sa première phrase."},
+  {type:"mcq", prompt:"Avant 1789, la société d'Ancien Régime était divisée en trois...", options:["Ordres (clergé, noblesse, tiers état)","Régions","Empires","Républiques"], answer:"Ordres (clergé, noblesse, tiers état)", hint:"Ceux qui prient, ceux qui combattent... et le tiers état qui paie presque tous les impôts !"},
+  {type:"mcq", prompt:"Qu'arrive-t-il au roi Louis XVI en janvier 1793 ?", options:["Il est guillotiné","Il devient empereur","Il s'enfuit en Amérique","Il gagne une bataille"], answer:"Il est guillotiné", hint:"Après la chute de la monarchie en 1792, le roi est jugé puis condamné à mort."},
+  {type:"mcq", prompt:"En quelle année la Première République est-elle proclamée ?", options:["1792","1789","1804","1870"], answer:"1792", hint:"Trois ans après la prise de la Bastille, la monarchie est abolie."},
+  {type:"mcq", prompt:"Que se passe-t-il le 2 décembre 1804 ?", options:["Napoléon se fait sacrer empereur","La prise de la Bastille","La Révolution commence","Louis XVI est jugé"], answer:"Napoléon se fait sacrer empereur", hint:"La cérémonie a lieu à Notre-Dame de Paris. Il pose lui-même la couronne sur sa tête !"},
+  {type:"mcq", prompt:"Quel grand recueil de lois créé par Napoléon existe toujours aujourd'hui ?", options:["Le Code civil","La Déclaration des droits","Le Code de la route","La Charte de 1789"], answer:"Le Code civil", hint:"Créé en 1804, il rassemble les lois qui organisent la vie des citoyens. On l'utilise encore !"},
+  {type:"mcq", prompt:"Parmi ces créations de Napoléon, laquelle existe encore de nos jours ?", options:["Les lycées et la Légion d'honneur","Les châteaux forts","Les ordres de l'Ancien Régime","La monarchie absolue"], answer:"Les lycées et la Légion d'honneur", hint:"Napoléon a créé les lycées pour former les futurs cadres du pays, et une décoration pour récompenser les mérites."},
+  {type:"mcq", prompt:"Quelle bataille marque la défaite finale de Napoléon en 1815 ?", options:["Waterloo","Austerlitz","Marignan","Alésia"], answer:"Waterloo", hint:"Elle a lieu en Belgique. Austerlitz (1805) était au contraire sa plus grande victoire."},
+  {type:"mcq", prompt:"Pour analyser un document historique, que fait-on EN PREMIER ?", options:["On identifie sa nature, son auteur et sa date","On recopie tout le texte","On invente la suite","On le colorie"], answer:"On identifie sa nature, son auteur et sa date", hint:"Qui l'a fait ? Quand ? Qu'est-ce que c'est ? C'est la carte d'identité du document."},
+  {type:"mcq", prompt:"Ce tableau montre un sacre dans une cathédrale, peint par David en 1807. De quel événement s'agit-il ?", options:["Le sacre de Napoléon","La prise de la Bastille","Le baptême de Clovis","La Fête de la Fédération"], answer:"Le sacre de Napoléon", hint:"1807, c'est juste après 1804... et David était le peintre officiel de l'empereur."},
+  {type:"mcq", prompt:"Qui était roi de France quand la Révolution a éclaté en 1789 ?", options:["Louis XVI","Louis XIV","Napoléon","Henri IV"], answer:"Louis XVI", hint:"C'est le roi marié à Marie-Antoinette, celui qui sera guillotiné en 1793."},
+  {type:"mcq", prompt:"Le 20 juin 1789, les députés font le serment du Jeu de paume. Que jurent-ils ?", options:["De donner une Constitution à la France","De couronner Napoléon","De reconstruire la Bastille","De partir en Amérique"], answer:"De donner une Constitution à la France", hint:"Réunis dans une salle de jeu de paume, ils jurent de ne pas se séparer avant d'avoir écrit une Constitution."},
+  {type:"mcq", prompt:"Que se passe-t-il pendant la nuit du 4 août 1789 ?", options:["L'abolition des privilèges","La prise de la Bastille","Le sacre de Napoléon","La bataille de Waterloo"], answer:"L'abolition des privilèges", hint:"Les nobles et le clergé renoncent à leurs avantages : tous les Français deviennent égaux devant l'impôt."},
+  {type:"mcq", prompt:"En juin 1791, la famille royale tente de fuir la France. Où est-elle arrêtée ?", options:["À Varennes","À Marseille","À Waterloo","À Rome"], answer:"À Varennes", hint:"Le roi est reconnu grâce à son portrait sur une pièce de monnaie ! Cette fuite ruine sa popularité."},
+  {type:"mcq", prompt:"Napoléon crée les « préfets ». Quel est leur rôle ?", options:["Diriger les départements au nom de l'État","Commander les navires","Enseigner dans les lycées","Peindre les tableaux officiels"], answer:"Diriger les départements au nom de l'État", hint:"Un préfet par département, pour appliquer partout les décisions de l'État. Ils existent toujours aujourd'hui !"},
+  {type:"mcq", prompt:"La Marseillaise, notre hymne national, a été composée...", options:["En 1792, pendant la Révolution","Sous Louis XIV","Par Napoléon en 1804","Au Moyen Âge"], answer:"En 1792, pendant la Révolution", hint:"C'est un chant de guerre révolutionnaire, chanté par les volontaires de Marseille en montant à Paris."},
+  {type:"mcq", prompt:"En 1805, Napoléon remporte sa plus célèbre victoire. Laquelle ?", options:["Austerlitz","Waterloo","Alésia","Marignan"], answer:"Austerlitz", hint:"On l'appelle « la bataille des Trois Empereurs »."}
+];
+
+/* ============ GÉNÉRATEURS MATHS ============ */
+function genCalculMental(){
+  var qs=[];
+  for(var i=0;i<4;i++){
+    var n = rand(1,499)*2;
+    qs.push({type:"input", prompt:"Calcule la MOITIÉ de "+n+".", answer:String(n/2), numeric:true,
+      hint:"La moitié, c'est diviser par 2. Astuce : moitié de "+n+" = moitié de "+(Math.floor(n/100)*100)+" + moitié de "+(n-Math.floor(n/100)*100)+"."});
+  }
+  for(i=0;i<3;i++){ var n1=rand(6,99); qs.push({type:"input", prompt:"Calcule : "+n1+" × 9", answer:String(n1*9), numeric:true, hint:"Astuce : "+n1+" × 9 = "+n1+" × 10 − "+n1+" = "+(n1*10)+" − "+n1+"."}); }
+  for(i=0;i<3;i++){ var n2=rand(6,99); qs.push({type:"input", prompt:"Calcule : "+n2+" × 11", answer:String(n2*11), numeric:true, hint:"Astuce : "+n2+" × 11 = "+n2+" × 10 + "+n2+" = "+(n2*10)+" + "+n2+"."}); }
+  for(i=0;i<3;i++){ var n3=rand(6,60); qs.push({type:"input", prompt:"Calcule : "+n3+" × 12", answer:String(n3*12), numeric:true, hint:"Astuce : "+n3+" × 12 = "+n3+" × 10 + "+n3+" × 2 = "+(n3*10)+" + "+(n3*2)+"."}); }
+  return shuffle(qs);
+}
+
+function genMultiplicationPosee(){
+  var qs=[];
+  for(var i=0;i<5;i++){
+    var a=rand(24,99), b=rand(12,99);
+    qs.push({type:"input", prompt:"Pose et calcule sur ton cahier : "+a+" × "+b, answer:String(a*b), numeric:true,
+      hint:"Décompose : "+a+" × "+b+" = "+a+" × "+(Math.floor(b/10)*10)+" + "+a+" × "+(b%10)+". N'oublie pas le zéro (ou le décalage) sur la 2ᵉ ligne !"});
+  }
+  for(i=0;i<4;i++){
+    var a2=rand(23,89), b2=rand(102,399);
+    qs.push({type:"input", prompt:"Pose et calcule sur ton cahier : "+a2+" × "+b2, answer:String(a2*b2), numeric:true,
+      hint:"Trois lignes : "+a2+" × "+(b2%10)+", puis "+a2+" × "+Math.floor((b2%100)/10)+" dizaines (1 zéro), puis "+a2+" × "+Math.floor(b2/100)+" centaines (2 zéros). Additionne le tout."});
+  }
+  return shuffle(qs);
+}
+
+function genFractions(){
+  var qs=[];
+  var configs=[{d:2,g:4},{d:4,g:8},{d:3,g:6},{d:5,g:10},{d:4,g:4},{d:2,g:6}];
+  shuffle(configs).slice(0,4).forEach(function(cfg){
+    var d=cfg.d, g=cfg.g;
+    var n=rand(1, 2*d-1);
+    var correctPos = (n*g)/d;
+    var positionsSet = {}; positionsSet[correctPos]=true;
+    while(Object.keys(positionsSet).length < 4){
+      var p = rand(1, 2*g-1);
+      positionsSet[p]=true;
+    }
+    var positions = shuffle(Object.keys(positionsSet).map(Number));
+    var letters="ABCD";
+    var pts = positions.map(function(pos,i){ return {label:letters[i], pos:pos}; });
+    var correctLabel = pts.filter(function(p){return p.pos===correctPos;})[0].label;
+    var opts = pts.map(function(p){return "Point "+p.label;}).sort();
+    qs.push({
+      type:"mcq",
+      prompt:"Quel point correspond à la fraction "+n+"/"+d+" ?",
+      options: opts,
+      answer: "Point "+correctLabel,
+      hint: (d===g)
+        ? ("L'unité est partagée en "+g+" : chaque graduation vaut 1/"+d+". Compte "+n+" graduations depuis 0.")
+        : ("Attention : l'unité est partagée en "+g+" parts, pas en "+d+" ! Chaque graduation vaut 1/"+g+". Pour "+n+"/"+d+", compte "+correctPos+" graduations depuis 0."),
+      numberLine: {g:g, units:2, points:pts}
+    });
+  });
+  for(var i=0;i<3;i++){
+    var d2=[3,4,5][rand(0,2)];
+    var entier=rand(1,3);
+    var reste=rand(1,d2-1);
+    var n2=entier*d2+reste;
+    qs.push({
+      type:"mcq",
+      prompt:"Décompose "+n2+"/"+d2+" en un nombre entier + une fraction inférieure à 1 :",
+      options: shuffle([entier+" + "+reste+"/"+d2, (entier+1)+" + "+reste+"/"+d2, entier+" + "+d2+"/"+reste, reste+" + "+entier+"/"+d2]),
+      answer: entier+" + "+reste+"/"+d2,
+      hint: "Combien de fois "+d2+"/"+d2+" (= 1 unité entière) dans "+n2+"/"+d2+" ? "+d2+" × "+entier+" = "+(entier*d2)+", et il reste "+reste+"/"+d2+"."
+    });
+  }
+  for(i=0;i<3;i++){
+    var mode=rand(0,1);
+    if(mode===0){
+      var n3=rand(11,99);
+      qs.push({type:"input", prompt:"Écris "+n3+"/10 sous forme de nombre à virgule :", answer:String(n3/10).replace(".",","), numeric:true,
+        hint: n3+"/10 = "+n3+" dixièmes. La virgule se place avant le dernier chiffre : "+Math.floor(n3/10)+" unités et "+(n3%10)+" dixième(s)."});
+    } else {
+      var n4=rand(101,999);
+      qs.push({type:"input", prompt:"Écris "+n4+"/100 sous forme de nombre à virgule :", answer:String(n4/100).replace(".",","), numeric:true,
+        hint: n4+"/100 = "+n4+" centièmes. La virgule se place avant les DEUX derniers chiffres."});
+    }
+  }
+  return shuffle(qs);
+}
+
+/* ============ DROITE GRADUÉE (SVG) ============ */
+function numberLineSVG(data){
+  var g=data.g, units=data.units, points=data.points;
+  var W=560, H=90, pad=30;
+  var total = units*g;
+  var step = (W-2*pad)/total;
+  function x(k){ return pad + k*step; }
+  var html = '<svg class="number-line" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg">';
+  html += '<line x1="'+(pad-10)+'" y1="55" x2="'+(W-pad+10)+'" y2="55" stroke="#1e3a5f" stroke-width="2.5"/>';
+  for(var k=0;k<=total;k++){
+    var isUnit = (k % g === 0);
+    html += '<line x1="'+x(k)+'" y1="'+(isUnit?44:49)+'" x2="'+x(k)+'" y2="'+(isUnit?66:61)+'" stroke="#1e3a5f" stroke-width="'+(isUnit?2.5:1.5)+'"/>';
+    if(isUnit){
+      html += '<text x="'+x(k)+'" y="82" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a5f">'+(k/g)+'</text>';
+    }
+  }
+  points.forEach(function(p){
+    html += '<circle cx="'+x(p.pos)+'" cy="55" r="5.5" fill="#c2410c"/>';
+    html += '<text x="'+x(p.pos)+'" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#c2410c">'+p.label+'</text>';
+  });
+  html += '</svg>';
+  return html;
+}
+
+/* ============ MISSIONS ============ */
+var MISSIONS = [
+  {id:"conjugaison", icon:"🦁", title:"Le Lion de la Conjugaison", sub:"Imparfait (les 2 S !), passé composé, accords",
+    bank:function(){ return shuffle(genImparfait2G(3).concat(shuffle(CONJUGAISON).slice(0, QUESTIONS_PER_SESSION-3))); }},
+  {id:"homophones", icon:"🐍", title:"L'Hydre des Homophones", sub:"et/est, a/à, son/sont, ces/ses, -er/-é...",
+    bank:function(){ return shuffle(HOMOPHONES); }},
+  {id:"grammaire", icon:"🦌", title:"La Biche de la Grammaire", sub:"COD/COI/COS, types de phrases, négation, ponctuation",
+    bank:function(){ return shuffle(GRAMMAIRE); }},
+  {id:"pointdevue", icon:"🎭", title:"Le Masque du Narrateur", sub:"Écrire en changeant de point de vue",
+    bank:function(){ return shuffle(POINT_DE_VUE); }},
+  {id:"calcul", icon:"⚡", title:"Les Éclairs du Calcul", sub:"Moitiés, ×9, ×11, ×12",
+    bank: genCalculMental},
+  {id:"multiplication", icon:"🏛️", title:"Les Colonnes de la Multiplication", sub:"Multiplication posée à 2 et 3 chiffres",
+    bank: genMultiplicationPosee},
+  {id:"fractions", icon:"🍕", title:"Le Festin des Fractions", sub:"Droite graduée, décomposition, écriture décimale",
+    bank: genFractions},
+  {id:"geometrie", icon:"📐", title:"Le Labyrinthe de Géométrie", sub:"Triangles, quadrilatères et leurs propriétés",
+    bank:function(){ return shuffle(GEOMETRIE); }},
+  {id:"sciences", icon:"🪐", title:"Le Voyage dans les Étoiles", sub:"Système solaire, objets célestes, états de la matière",
+    bank:function(){ return shuffle(SCIENCES); }},
+  {id:"histoire", icon:"🗡️", title:"Le Temps des Révolutions", sub:"1789, la Révolution et Napoléon",
+    bank:function(){ return shuffle(HISTOIRE); }}
+];
+
+var PRAISE = ["Bravo Chloé ! 🌟","Excellent ! 💪","Parfait ! ✨","Tu assures ! 🎉","Magnifique ! 🏆","Quelle championne ! ⭐"];
+var RETRY = ["Pas tout à fait... lis l'indice ! 🔍","Presque ! Regarde l'indice. 💡","Réessaie avec cet indice ! 🧭"];
+
+/* ============ ÉTAT DE L'APPLICATION ============ */
+var state = {
+  screen: "home",
+  mission: null,
+  questions: [],
+  idx: 0,
+  score: 0,
+  solved: false,
+  firstTry: true,
+  showHint: false,
+  feedback: null,
+  laurels: loadLaurels()
+};
+
+var appEl = document.getElementById("app");
+
+function startMission(m){
+  state.mission = m;
+  state.questions = m.bank().slice(0, QUESTIONS_PER_SESSION);
+  state.idx = 0; state.score = 0; state.solved = false; state.firstTry = true;
+  state.showHint = false; state.feedback = null;
+  state.screen = "quiz";
+  render();
+}
+
+function currentQuestion(){ return state.questions[state.idx]; }
+
+function check(given){
+  if(state.solved) return;
+  var q = currentQuestion();
+  var ok = q.numeric ? sameNumber(given, q.answer) : (norm(given) === norm(q.answer));
+  if(ok){
+    if(state.firstTry) state.score++;
+    state.feedback = {ok:true, msg: PRAISE[rand(0,PRAISE.length-1)]};
+    state.solved = true;
+    state.showHint = false;
+  } else {
+    state.feedback = {ok:false, msg: RETRY[rand(0,RETRY.length-1)]};
+    state.showHint = true;
+    state.firstTry = false;
+  }
+  render();
+}
+
+function nextQuestion(){
+  if(state.idx+1 >= state.questions.length){
+    var earned = state.score >= Math.ceil(state.questions.length*0.75);
+    if(earned){ state.laurels[state.mission.id] = true; saveLaurels(state.laurels); }
+    state.screen = "end";
+  } else {
+    state.idx++; state.solved=false; state.firstTry=true; state.showHint=false; state.feedback=null;
+  }
+  render();
+}
+
+function goHome(){ state.screen="home"; render(); }
+
+/* ============ RENDU ============ */
+function render(){
+  if(state.screen === "home") renderHome();
+  else if(state.screen === "quiz") renderQuiz();
+  else renderEnd();
+}
+
+function renderHome(){
+  var count = Object.keys(state.laurels).length;
+  var cardsHtml = MISSIONS.map(function(m){
+    var laurel = state.laurels[m.id] ? ' <span title="Laurier gagné !">🌿</span>' : "";
+    return (
+      '<button class="mission-card" data-id="'+m.id+'">'+
+        '<span class="mission-icon">'+m.icon+'</span>'+
+        '<span>'+
+          '<span class="mission-title">'+esc(m.title)+laurel+'</span>'+
+          '<span class="mission-sub" style="display:block;">'+esc(m.sub)+'</span>'+
+        '</span>'+
+      '</button>'
+    );
+  }).join("");
+
+  appEl.innerHTML =
+    '<div class="home-header">'+
+      '<div class="home-emoji">🏺</div>'+
+      '<h1>Les Travaux de Chloé</h1>'+
+      '<p class="subtitle">Mes missions de révision avant la 6ème</p>'+
+      '<div class="laurels-badge">🌿 Lauriers gagnés : '+count+' / '+MISSIONS.length+'</div>'+
+    '</div>'+
+    '<div class="mission-grid">'+cardsHtml+'</div>'+
+    '<p class="footnote">Réussis 6 questions sur 8 du premier coup pour gagner la couronne de laurier 🌿 de chaque mission !</p>';
+
+  Array.prototype.forEach.call(appEl.querySelectorAll(".mission-card"), function(btn){
+    btn.addEventListener("click", function(){
+      var m = MISSIONS.filter(function(mm){ return mm.id === btn.getAttribute("data-id"); })[0];
+      startMission(m);
+    });
+  });
+}
+
+function renderQuiz(){
+  var q = currentQuestion();
+  var m = state.mission;
+  var progressPct = ((state.idx + (state.solved?1:0)) / state.questions.length) * 100;
+
+  var bodyHtml = '<p class="prompt">'+esc(q.prompt)+'</p>';
+  if(q.numberLine){ bodyHtml += numberLineSVG(q.numberLine); }
+
+  if(q.type === "mcq"){
+    bodyHtml += '<div class="options">' + q.options.map(function(opt){
+      var isCorrect = state.solved && norm(opt) === norm(q.answer);
+      return '<button class="option-btn'+(isCorrect?' correct':'')+'" data-opt="'+esc(opt)+'" '+(state.solved?'disabled':'')+'>'+esc(opt)+'</button>';
+    }).join("") + '</div>';
+  } else {
+    bodyHtml += '<div class="input-row">'+
+      '<input type="text" class="text-input" id="quiz-input" placeholder="Ta réponse..." '+(state.solved?'disabled':'')+' autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">'+
+      (state.solved ? '' : '<button class="validate-btn" id="validate-btn">Valider</button>') +
+      '</div>';
+  }
+
+  if(state.feedback){
+    bodyHtml += '<div class="feedback '+(state.feedback.ok?'ok':'ko')+'">'+esc(state.feedback.msg)+'</div>';
+  }
+  if(state.showHint && !state.solved){
+    bodyHtml += '<div class="hint"><b>💡 Indice : </b>'+esc(q.hint)+'</div>';
+  }
+  if(state.solved){
+    var isLast = (state.idx+1 >= state.questions.length);
+    bodyHtml += '<button class="next-btn" id="next-btn">'+(isLast ? 'Voir mon résultat 🏆' : 'Question suivante →')+'</button>';
+  }
+
+  appEl.innerHTML =
+    '<div class="topbar">'+
+      '<button class="back-btn" id="back-btn">← Missions</button>'+
+      '<span class="progress-label">Question '+(state.idx+1)+' / '+state.questions.length+' · ⭐ '+state.score+'</span>'+
+    '</div>'+
+    '<div class="progress-track"><div class="progress-fill" style="width:'+progressPct+'%"></div></div>'+
+    '<div class="quiz-card">'+
+      '<div class="quiz-mission-tag"><span class="icon">'+m.icon+'</span><span>'+esc(m.title)+'</span></div>'+
+      bodyHtml+
+    '</div>';
+
+  document.getElementById("back-btn").addEventListener("click", goHome);
+
+  if(q.type === "mcq"){
+    Array.prototype.forEach.call(appEl.querySelectorAll(".option-btn"), function(btn){
+      btn.addEventListener("click", function(){ check(btn.getAttribute("data-opt")); });
+    });
+  } else {
+    var input = document.getElementById("quiz-input");
+    if(input){
+      input.focus();
+      input.addEventListener("keydown", function(e){
+        if(e.key === "Enter" && !state.solved && input.value.trim()){ check(input.value); }
+      });
+    }
+    var vbtn = document.getElementById("validate-btn");
+    if(vbtn){
+      vbtn.addEventListener("click", function(){
+        if(input.value.trim()) check(input.value);
+      });
+    }
+  }
+
+  var nbtn = document.getElementById("next-btn");
+  if(nbtn) nbtn.addEventListener("click", nextQuestion);
+}
+
+function renderEnd(){
+  var earned = state.laurels[state.mission.id];
+  appEl.innerHTML =
+    '<div class="end-wrap"><div class="end-card">'+
+      '<div class="end-emoji">'+(earned ? "🌿" : "💪")+'</div>'+
+      '<h2 class="end-title">'+(earned ? "Mission accomplie !" : "Bel entraînement !")+'</h2>'+
+      '<p class="end-score">Score du premier coup : <b>'+state.score+' / '+state.questions.length+'</b></p>'+
+      '<p class="end-msg">'+(earned
+        ? "Tu as gagné la couronne de laurier ! Même Hercule serait fier de toi."
+        : "Recommence cette mission pour décrocher la couronne de laurier, tu y es presque !")+'</p>'+
+      '<div class="end-actions">'+
+        '<button class="btn-primary" id="retry-btn">🔄 Refaire cette mission</button>'+
+        '<button class="btn-secondary" id="home-btn">🏺 Retour aux missions</button>'+
+      '</div>'+
+    '</div></div>';
+
+  document.getElementById("retry-btn").addEventListener("click", function(){ startMission(state.mission); });
+  document.getElementById("home-btn").addEventListener("click", goHome);
+}
+
+render();
+})();
+</script>
+</body>
+</html>
